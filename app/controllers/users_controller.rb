@@ -8,9 +8,20 @@ class UsersController < ApplicationController
     end
   end
 
+  post '/signup' do
+    if params.value?("")
+      redirect '/signup'
+    else
+      @user = User.create(params)
+      session[:user_id] = @user.id
+      redirect '/cabinets'
+    end
+  end
+
+
   get '/login' do
     if logged_in?
-      redirect '/cabinets/index'
+      redirect '/cabinets'
     else
       erb :'/users/login'
     end
