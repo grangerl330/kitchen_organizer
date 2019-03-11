@@ -1,0 +1,3 @@
+class CabinetsController < ApplicationController
+
+end 
