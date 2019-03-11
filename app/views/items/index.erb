@@ -1,0 +1,9 @@
+<h2>Your Items:</h2>
+
+<% @user.items.each do |item| %>
+  <h3><%= item.name %></h3>
+  <p>Category: <%= item.category %></p>
+  <p><a href="/items/<%=item.id%>/edit"><button type="button">Edit</button></a></p>
+<% end  %>
+
+<p><a href="items/new"><button type="button">Add Item</button></a></p>
