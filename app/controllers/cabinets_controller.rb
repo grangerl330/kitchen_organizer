@@ -11,4 +11,13 @@ class CabinetsController < ApplicationController
     erb :'cabinets/new'
   end
 
+  post '/cabinets' do
+    if params.value?("")
+      redirect '/cabinets/new'
+    else
+      @cabinet = Cabinet.create(params)
+      redirect "/cabinets/#{@cabinet.id}"
+    end
+  end
+
 end
