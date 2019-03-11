@@ -19,6 +19,9 @@
         <%= yield %>
 
       <footer class="branding">
+        <% if logged_in? %>
+          <p><a href="/logout"><button type="button">Log Out</button></a></p>
+        <% end %>
         <small>&copy; 2019 <strong>Kitchen Organizer</strong></small>
       </footer>
     </div>
