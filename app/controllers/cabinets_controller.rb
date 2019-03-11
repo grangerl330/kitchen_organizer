@@ -23,13 +23,21 @@ class CabinetsController < ApplicationController
   get '/cabinets/:id' do
     redirect_if_not_logged_in
     @cabinet = Cabinet.find_by_id(params[:id])
-    erb :'/cabinets/show'
+    if @cabinet.user_id == session[:user_id]
+      erb :'/cabinets/show'
+    else
+      redirect '/cabinets?error=You do not have access to this cabinet'
+    end
   end
 
   get '/cabinets/:id/edit' do
     redirect_if_not_logged_in
     @cabinet = Cabinet.find_by_id(params[:id])
-    erb :'/cabinets/edit'
+    if @cabinet.user_id == session[:user_id]
+      erb :'/cabinets/edit'
+    else
+      redirect '/cabinets?error=You do not have access to this cabinet'
+    end 
   end
 
   post '/cabinets/:id' do
