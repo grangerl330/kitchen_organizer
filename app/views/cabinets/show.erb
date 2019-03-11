@@ -1,0 +1,9 @@
+<h2><%= @cabinet.name %></h2>
+<p><%= @cabinet.capacity %></p>
+
+<h3>Items</h3>
+<% @cabinet.items.each do |item| %>
+  <p><%= item.name %></p>
+<% end %>
+
+<p><a href="/cabinets/<%= @cabinet.id %>/edit"><button type="button">Edit Cabinet</button></a></p>

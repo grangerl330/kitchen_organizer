@@ -20,4 +20,9 @@ class CabinetsController < ApplicationController
     end
   end
 
+  get '/cabinets/:id' do
+    @cabinet = Cabinet.find_by_id(params[:id])
+    erb :'/cabinets/show'
+  end
+
 end
