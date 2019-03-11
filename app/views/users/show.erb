@@ -1,0 +1,5 @@
+<h2>Your Cabinets:</h2>
+
+<% @user.cabinets.each do |cabinet| %>
+  <p><a href="/cabinets/<%=cabinet.id%>"><%= cabinet.name %></a></p>
+<% end %>
