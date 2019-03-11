@@ -3,6 +3,7 @@
 <% @user.items.each do |item| %>
   <h3><%= item.name %></h3>
   <p>Category: <%= item.category %></p>
+  <p>Current Cabinet: <%= item.cabinet %></p>
   <p><a href="/items/<%=item.id%>/edit"><button type="button">Edit</button></a></p>
 <% end  %>
 
