@@ -6,4 +6,9 @@ class CabinetsController < ApplicationController
     erb :'/cabinets/index'
   end
 
+  get '/cabinets/new' do
+    redirect_if_not_logged_in
+    erb :'cabinets/new'
+  end
+
 end

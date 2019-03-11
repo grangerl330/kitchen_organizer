@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   get '/login' do
     if logged_in?
       redirect '/cabinets'
