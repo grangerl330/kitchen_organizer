@@ -1,0 +1,16 @@
+<h2>Create A New Item:</h2>
+
+<form action="/cabinets" method="POST">
+  <p>Name: <input type="text" name="name"></p>
+  <p>Category: <input type="text" name="capacity"></p>
+  <label> Cabinet </label>
+  <select>
+    <% @user.cabinets.each do |cabinet| %>
+      <option value="cabinet name"><%=cabinet.name%></option>
+    <% end %>
+      <option value="cabinet name">None</option>
+  </select>
+  <br>
+  <br>
+  <p><input type="submit" value="Create Item"></p>
+</form>
