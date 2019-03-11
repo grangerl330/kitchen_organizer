@@ -1,0 +1,8 @@
+<h2>Edit: <%= @cabinet.name %></h2>
+<p>Current Total Capacity: <%= @cabinet.capacity %></p>
+
+<form action="/cabinets/<%= @cabinet.id %>" method="post">
+  <p>New Cabinet Name: <input type="text" name="name"></p>
+  <p>New Total Capacity: <input type="text" name="capacity"></p>
+  <p><input type="submit" value="Update Cabinet"></p>
+</form>

@@ -21,8 +21,15 @@ class CabinetsController < ApplicationController
   end
 
   get '/cabinets/:id' do
+    redirect_if_not_logged_in
     @cabinet = Cabinet.find_by_id(params[:id])
     erb :'/cabinets/show'
+  end
+
+  get '/cabinets/:id/edit' do
+    redirect_if_not_logged_in
+    @cabinet = Cabinet.find_by_id(params[:id])
+    erb :'/cabinets/edit'
   end
 
 end
