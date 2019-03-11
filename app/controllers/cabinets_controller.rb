@@ -32,4 +32,14 @@ class CabinetsController < ApplicationController
     erb :'/cabinets/edit'
   end
 
+  post '/cabinets/:id' do
+    @cabinet = Cabinet.find_by_id(params[:id])
+    if params.value?("")
+      redirect "/cabinets/#{@cabinet.id}"
+    else
+      @cabinet.update(params)
+      redirect "/cabinets/#{@cabinet.id}"
+    end
+  end
+
 end
