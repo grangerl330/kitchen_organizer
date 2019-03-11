@@ -1,4 +1,4 @@
-<% @cabinets.each do |cabinet| %>
+<% @user.cabinets.each do |cabinet| %>
   <h3><%= cabinet.name %></h3>
   <p>Capacity: <%= cabinet.capacity %></p>
   <p><a href="/cabinets/<%=cabinet.id%>/edit"><button type="button">Edit</button></a></p>
