@@ -16,6 +16,8 @@ class CabinetsController < ApplicationController
       redirect '/cabinets/new'
     else
       @cabinet = Cabinet.create(params)
+      @cabinet.user_id = session[:user_id]
+      @cabinet.save
       redirect "/cabinets/#{@cabinet.id}"
     end
   end
@@ -37,13 +39,13 @@ class CabinetsController < ApplicationController
       erb :'/cabinets/edit'
     else
       redirect '/cabinets?error=You do not have access to this cabinet'
-    end 
+    end
   end
 
   post '/cabinets/:id' do
     @cabinet = Cabinet.find_by_id(params[:id])
     if params.value?("")
-      redirect "/cabinets/#{@cabinet.id}"
+      redirect "/cabinets/#{@cabinet.id}/edit?error=All update values must be filled in"
     else
       @cabinet.update(params)
       redirect "/cabinets/#{@cabinet.id}"
