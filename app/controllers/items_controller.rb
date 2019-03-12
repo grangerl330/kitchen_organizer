@@ -41,4 +41,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  get '/items/:id/edit' do
+    redirect_if_not_logged_in
+    @item = Item.find_by_id(params[:id])
+    @user = User.find_by_id(session[:user_id])
+    if @item.user_id == session[:user_id]
+      erb :'/items/edit'
+    else
+      redirect '/items?error=You do not have access to this item'
+    end
+  end
+
 end
