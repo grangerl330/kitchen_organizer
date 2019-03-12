@@ -7,11 +7,13 @@
     <%if item.cabinet%>
       <%= item.cabinet.name %>
     <% end %></p>
-  <p><a href="/items/<%=item.id%>/edit"><button type="button">Edit</button></a></p>
-  <form action="/items/<%=item.id%>/delete" method="POST">
+
+  <p><a href="/items/<%=item.id%>/edit"><input type="button" value="Edit"></a></p>
+
+  <p><form action="/items/<%=item.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
-  </form>
+  </form></p>
 <% end  %>
-<br></br>
-<p><a href="items/new"><button type="button">Add Item</button></a></p>
+
+<p><a href="items/new"><input type="button" value="Add Item"></a></p>

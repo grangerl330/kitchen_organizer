@@ -1,4 +1,4 @@
-<h2><%= @cabinet.name %></h2>
+<h2><%= @cabinet.name %></h2> 
 <p><b>Capacity:</b> <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
 
 <p><b>Items:</b></p>
@@ -6,9 +6,9 @@
   <p><%= item.name %></p>
 <% end %>
 
-<p><a href="/cabinets/<%= @cabinet.id %>/edit"><button type="button">Edit Cabinet</button></a></p>
+<p><a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a></p>
 
-<p><a href="/items/new"><button type="button">Add Items</button></a></p>
+<p><a href="/items/new"><input type="button" value="Add Items"</a></p>
 
 <form action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
