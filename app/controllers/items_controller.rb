@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
   get '/items/:id' do
     redirect_if_not_logged_in
     @item = Item.find_by_id(params[:id])
+
     if @item.user_id == session[:user_id]
       erb :'/items/show'
     else
@@ -45,11 +46,31 @@ class ItemsController < ApplicationController
     redirect_if_not_logged_in
     @item = Item.find_by_id(params[:id])
     @user = User.find_by_id(session[:user_id])
+
     if @item.user_id == session[:user_id]
       erb :'/items/edit'
     else
       redirect '/items?error=You do not have access to this item'
     end
+  end
+
+  post '/items/:id' do
+    @item = Item.find_by_id(params[:id])
+    @cabinet = Cabinet.find_by_name(params["cabinet name"])
+
+    if params.value?("")
+      redirect "/items/#{@item.id}/edit?error=All update values must be filled in"
+    else
+      @item.update(name: params["name"], category: params["category"])
+    end
+
+    if @cabinet
+      @item.update(cabinet_id: @cabinet.id)
+    else
+      @item.update(cabinet_id: "")
+    end
+
+    redirect "/items/#{@item.id}"
   end
 
 end

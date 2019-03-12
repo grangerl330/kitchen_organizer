@@ -3,7 +3,7 @@
 
 <form action="/items/<%= @item.id %>" method="POST">
   <p>New Item Name: <input type="text" name="name"></p>
-  <p>New Category: <input type="text" name="capacity"></p>
+  <p>New Category: <input type="text" name="category"></p>
   <label> Cabinet </label>
   <select name="cabinet name">
     <% @user.cabinets.each do |cabinet| %>
