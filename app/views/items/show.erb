@@ -3,3 +3,8 @@
 <p><b>Cabinet:</b><%= @item.cabinet %></p>
 
 <a href="/items/<%= @item.id %>/edit"><button type="button">Edit</button></a>
+
+<form action="/items/<%=@item.id%>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Item">
+</form>

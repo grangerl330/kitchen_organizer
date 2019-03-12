@@ -73,4 +73,14 @@ class ItemsController < ApplicationController
     redirect "/items/#{@item.id}"
   end
 
+  delete '/items/:id/delete' do
+    @item = Item.find_by_id(params[:id])
+    if logged_in? && @item.user_id == session[:user_id]
+      @item.delete
+      redirect '/items'
+    else
+      redirect '/login?error=You have to be logged in to do that'
+    end
+  end
+
 end
