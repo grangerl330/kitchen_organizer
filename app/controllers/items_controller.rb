@@ -84,4 +84,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  delete '/items/delete' do
+    @user = User.find_by_id(session[:user_id])
+    if logged_in?
+      Item.all.each do |item|
+        if item.user_id == @user.id
+          item.destroy
+        end
+      end
+      redirect '/items'
+    else
+      redirect '/login?error=You have to be logged in to do that'
+    end
+  end
+
 end

@@ -1,4 +1,9 @@
-<h2>Your Items: &nbsp <a href="items/new"><input type="button" value="Add Item"></a></h2>
+<h2>Your Items: &nbsp <a href="items/new"><input type="button" value="Add Item"></a>
+  <form style="display:inline-block;" action="/items/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete All Items">
+  </form>
+</h2>
 
 <% @user.items.each do |item| %>
   <h3><%= item.name %> <a href="/items/<%=item.id%>/edit"><input type="button" value="Edit"></a>
