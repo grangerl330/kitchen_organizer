@@ -1,7 +1,7 @@
 <h2><%= @cabinet.name %></h2>
-<p>Capacity: <%= @cabinet.capacity %></p>
+<p><b>Capacity:</b> <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
 
-<h3>Items</h3>
+<p><b>Items:</b></p>
 <% @cabinet.items.each do |item| %>
   <p><%= item.name %></p>
 <% end %>

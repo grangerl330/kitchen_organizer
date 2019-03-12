@@ -1,5 +1,2 @@
-<h2>Your Cabinets:</h2>
-
-<% @user.cabinets.each do |cabinet| %>
-  <p><a href="/cabinets/<%=cabinet.id%>"><%= cabinet.name %></a></p>
-<% end %>
+<h2><a href="/cabinets"><button type="button">View Cabinets</button></a></h2>
+<h2><a href="/items"><button type="button">View Items</button></a></h2>
