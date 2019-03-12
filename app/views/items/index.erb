@@ -8,6 +8,10 @@
       <%= item.cabinet.name %>
     <% end %></p>
   <p><a href="/items/<%=item.id%>/edit"><button type="button">Edit</button></a></p>
+  <form action="/items/<%=item.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
 <% end  %>
-
+<br></br>
 <p><a href="items/new"><button type="button">Add Item</button></a></p>
