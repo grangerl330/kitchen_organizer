@@ -54,26 +54,22 @@ class CabinetsController < ApplicationController
 
   delete '/cabinets/:id/delete' do
     @cabinet = Cabinet.find_by_id(params[:id])
-    if logged_in? && @cabinet.user_id == session[:user_id]
-      @cabinet.delete
-      redirect '/cabinets'
-    else
-      redirect '/login?error=You have to be logged in to do that'
-    end
+
+    @cabinet.destroy
+
+    redirect '/cabinets'
   end
 
   delete '/cabinets/delete' do
     @user = User.find_by_id(session[:user_id])
-    if logged_in?
-      Cabinet.all.each do |cabinet|
-        if cabinet.user_id == @user.id
-          cabinet.destroy
-        end
-      end  
-      redirect '/cabinets'
-    else
-      redirect '/login?error=You have to be logged in to do that'
+
+    Cabinet.all.each do |cabinet|
+      if cabinet.user_id == @user.id
+        cabinet.destroy
+      end
     end
+
+    redirect '/cabinets'
   end
 
 end
