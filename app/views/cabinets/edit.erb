@@ -1,5 +1,5 @@
 <h2>Edit: <%= @cabinet.name %></h2>
-<p>Current Total Capacity: <%= @cabinet.capacity %></p>
+<p>Current Capacity: <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
 
 <form action="/cabinets/<%= @cabinet.id %>" method="POST">
   <p>New Cabinet Name: <input type="text" name="name"></p>

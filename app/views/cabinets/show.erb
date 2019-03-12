@@ -1,16 +1,11 @@
-<h2><%= @cabinet.name %></h2> 
+<h2><%= @cabinet.name %> <a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a>
+  <form style="display:inline-block;" action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Cabinet">
+  </form></h2>
 <p><b>Capacity:</b> <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
 
-<p><b>Items:</b></p>
+<p><b>Items:</b> <a href="/items/new"><input type="button" value="Add Items"></a></p>
 <% @cabinet.items.each do |item| %>
-  <p><%= item.name %></p>
+  <p><%= item.name %> <a href="/items/<%=item.id%>/edit"><input type="button" value="Edit"></a></p>
 <% end %>
-
-<p><a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a></p>
-
-<p><a href="/items/new"><input type="button" value="Add Items"</a></p>
-
-<form action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Cabinet">
-</form>

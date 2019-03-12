@@ -1,9 +1,7 @@
-<h2>Your Cabinets:</h2>
+<h2>Your Cabinets: <a href="cabinets/new"><input type="button" value="Add Cabinet"></a></h2>
 
 <% @user.cabinets.each do |cabinet| %>
   <h3><%= cabinet.name %></h3>
   <p>Capacity: <%= cabinet.capacity - cabinet.items.count %>/<%= cabinet.capacity %></p>
   <p><a href="/cabinets/<%=cabinet.id%>"><input type="button" value="View Cabinet"></a></p>
 <% end  %>
-
-<p><a href="cabinets/new"><input type="button" value="Add Cabinet"></a></p>

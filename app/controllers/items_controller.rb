@@ -27,8 +27,9 @@ class ItemsController < ApplicationController
     if @cabinet
       @cabinet.items << @item
       @cabinet.save
+      redirect "/cabinets/#{@cabinet.id}"
     end
-    redirect '/items'
+    redirect "/items"
   end
 
   get '/items/:id' do

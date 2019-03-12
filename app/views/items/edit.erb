@@ -1,16 +1,23 @@
-<h2>Edit: <%= @item.name %></h2>
+<h2>Edit: <%= @item.name %> &nbsp
+  <form style="display:inline-block;" action="/items/<%=@item.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form></h2>
+
 <p>Current Category: <%= @item.category %></p>
 
 <form action="/items/<%= @item.id %>" method="POST">
   <p>New Item Name: <input type="text" name="name"></p>
   <p>New Category: <input type="text" name="category"></p>
-  <label> Cabinet </label>
+
+  <label> Cabinet: </label>
   <select name="cabinet name">
     <% @user.cabinets.each do |cabinet| %>
       <option><%=cabinet.name%></option>
     <% end %>
       <option>None</option>
   </select>
+
   <br></br>
-  <p><input type="submit" value="Update Item"></p>
+  <p><input type="submit" value="Update Item"> </p>
 </form>
