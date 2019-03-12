@@ -20,6 +20,9 @@
 
       <footer class="branding">
         <% if logged_in? %>
+          <a href="/cabinets"><input type="button" value="View Cabinets"></a>
+          <a href="/items"><input type="button" value="View Items"></a>
+          <br></br>
           <p><a href="/logout"><input type="button" value="Log Out"></a></p>
         <% end %>
         <small>&copy; 2019 <strong>Kitchen Organizer</strong></small>
