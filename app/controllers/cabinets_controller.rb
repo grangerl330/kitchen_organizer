@@ -18,7 +18,7 @@ class CabinetsController < ApplicationController
       @cabinet = Cabinet.create(params)
       @cabinet.user_id = session[:user_id]
       @cabinet.save
-      redirect "/cabinets/#{@cabinet.id}"
+      redirect "/cabinets"
     end
   end
 

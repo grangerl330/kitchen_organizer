@@ -2,7 +2,7 @@
 
 <% @user.cabinets.each do |cabinet| %>
   <h3><%= cabinet.name %></h3>
-  <p>Capacity: <%= cabinet.capacity %></p>
+  <p>Capacity: <%= cabinet.capacity - cabinet.items.count %>/<%= cabinet.capacity %></p>
   <p><a href="/cabinets/<%=cabinet.id%>"><button type="button">View Cabinet</button></a></p>
 <% end  %>
 
