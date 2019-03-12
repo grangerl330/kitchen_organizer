@@ -52,4 +52,14 @@ class CabinetsController < ApplicationController
     end
   end
 
+  delete '/cabinets/:id/delete' do
+    @cabinet = Cabinet.find_by_id(params[:id])
+    if logged_in? && @cabinet.user_id == session[:user_id]
+      @cabinet.delete
+      redirect '/cabinets'
+    else
+      redirect '/login?error=You have to be logged in to do that'
+    end
+  end
+
 end
