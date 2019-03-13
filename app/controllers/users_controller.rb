@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/cabinets'
     else
-      redirect '/login'
+      redirect '/login?error=Invalid username or password'
     end
   end
 
