@@ -16,8 +16,8 @@ class ItemsController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @cabinet = Cabinet.find_by_name(params["cabinet name"])
 
-    if params.value?("")
-      redirect '/items/new'
+    if params["name"] == ""
+      redirect '/items/new?error=Item must have a name'
     else
       @item = Item.create(name: params[:name], category: params[:category])
       @user.items << @item
