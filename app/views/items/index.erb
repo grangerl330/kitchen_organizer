@@ -10,11 +10,14 @@
   <form style="display:inline-block;" action="/items/<%=item.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
-  </form></h3>
+  </form>
+</h3>
   <br>
   <p>Category: <%= item.category %></p>
   <p>Cabinet:
     <%if item.cabinet%>
       <%= item.cabinet.name %>
+    <% else %>
+      None
     <% end %></p>
 <% end  %>
