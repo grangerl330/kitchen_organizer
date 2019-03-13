@@ -1,4 +1,9 @@
-<h2><%= @item.name %></h2>
+<h2><%= @item.name %> <a href="/items/<%= @item.id %>/edit"><input type="button" value="Edit"></a>
+  <form style="display:inline-block;" action="/items/<%=@item.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Item">
+  </form>
+</h2>
 <p><b>Category:</b> <%= @item.category %></p>
 <p><b>Cabinet:</b>
   <%if @item.cabinet%>
@@ -7,10 +12,3 @@
     None
   <% end %>
 </p>
-
-<p><a href="/items/<%= @item.id %>/edit"><input type="button" value="Edit"></a></p>
-
-<form action="/items/<%=@item.id%>/delete" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Item">
-</form>
