@@ -44,12 +44,17 @@ class CabinetsController < ApplicationController
 
   post '/cabinets/:id' do
     @cabinet = Cabinet.find_by_id(params[:id])
-    if params.value?("")
-      redirect "/cabinets/#{@cabinet.id}/edit?error=All update values must be filled in"
+
+    if params["name"] == "" && params["capacity"] == ""
+      @cabinet
+    elsif params["name"] == ""
+      @cabinet.update(capacity: params["capacity"])
+    elsif params["capacity"] == ""
+      @cabinet.update(name: params["name"])
     else
       @cabinet.update(params)
-      redirect "/cabinets/#{@cabinet.id}"
     end
+    redirect "/cabinets/#{@cabinet.id}"
   end
 
   delete '/cabinets/:id/delete' do

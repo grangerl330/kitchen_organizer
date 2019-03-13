@@ -1,6 +1,12 @@
 <h2><%= @item.name %></h2>
 <p><b>Category:</b> <%= @item.category %></p>
-<p><b>Cabinet:</b> <%= @item.cabinet.name %></p>
+<p><b>Cabinet:</b>
+  <%if @item.cabinet%>
+    <%= @item.cabinet.name %>
+  <% else %>
+    None
+  <% end %>
+</p>
 
 <p><a href="/items/<%= @item.id %>/edit"><input type="button" value="Edit"></a></p>
 

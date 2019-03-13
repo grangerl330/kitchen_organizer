@@ -59,8 +59,12 @@ class ItemsController < ApplicationController
     @item = Item.find_by_id(params[:id])
     @cabinet = Cabinet.find_by_name(params["cabinet name"])
 
-    if params.value?("")
-      redirect "/items/#{@item.id}/edit?error=All update values must be filled in"
+    if params["name"] == "" && params["category"] == ""
+      @item
+    elsif params["name"] == ""
+      @item.update(category: params["category"])
+    elsif params["category"] == ""
+      @item.update(name: params["name"])
     else
       @item.update(name: params["name"], category: params["category"])
     end
