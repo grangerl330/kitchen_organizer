@@ -1,24 +1,30 @@
-<h2>Your Items: &nbsp <a href="items/new"><input type="button" value="Add Item"></a>
-  <form style="display:inline-block;" action="/items/delete" method="POST">
+<h2>Your Cabinets: <a href="cabinets/new"><input type="button" value="Add Cabinet"></a>
+  <form style="display:inline-block;" action="/cabinets/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete All Items">
+    <input type="submit" value="Delete All Cabinets">
   </form>
 </h2>
 
-<% @user.items.each do |item| %>
-  <h3><%= item.name %> <a href="/items/<%=item.id%>/edit"><input type="button" value="Edit"></a>
-  <form style="display:inline-block;" action="/items/<%=item.id%>/delete" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form>
-</h3>
-  <br>
-  <p>Category: <%= item.category %></p>
-  <p>Cabinet:
-    <%if item.cabinet%>
-      <%= item.cabinet.name %>
+<% @user.cabinets.each do |cabinet| %>
+  <h3><%=cabinet.name %> <a href="/cabinets/<%=cabinet.id%>"><input type="button" value="View Cabinet"></a>
+    <form style="display:inline-block;" action="/cabinets/<%=cabinet.id%>/delete" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </h3>
+  <p style="color:#b8b8b8">Capacity:
+    <% if cabinet.items.count > 0 %>
+      <%= cabinet.items.count %>/<%= cabinet.capacity %>
     <% else %>
-      None
+      Empty
     <% end %>
   </p>
+
+  <label><b>Items:</b></label>
+    <ul>
+    <% cabinet.items.each_with_index do |item, index| %>
+      <li><%= index + 1 %>. <%= item.name %></li>
+    <% end %>
+    </ul>
+    <br>
 <% end  %>
