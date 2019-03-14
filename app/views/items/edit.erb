@@ -4,16 +4,18 @@
     <input type="submit" value="Delete">
   </form></h2>
 
-<p>Current Category: <%= @item.category %></p>
-
 <form action="/items/<%= @item.id %>" method="POST">
-  <p>New Item Name: <input type="text" name="name"></p>
-  <p>New Category: <input type="text" name="category"></p>
+  <p>Item Name: <input type="text" name="name" value="<%= @item.name %>"></p>
+  <p>Category: <input type="text" name="category" value="<%= @item.category %>"></p>
 
   <label> Cabinet: </label>
   <select name="cabinet name">
     <% @user.cabinets.each do |cabinet| %>
-      <option><%=cabinet.name%></option>
+      <% if cabinet.id == @item.cabinet_id %>
+        <option selected="selected"><%=cabinet.name%></option>
+      <% else %>
+        <option><%=cabinet.name%></option>
+      <% end %>
     <% end %>
       <option>None</option>
   </select>

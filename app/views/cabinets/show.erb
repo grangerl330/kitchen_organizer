@@ -1,5 +1,5 @@
 <h2><%= @cabinet.name %>
-  <a href="/items/new"><input type="button" value="Add Item"></a>
+  <a href="/items/new"><input name="<%=@cabinet.id%>" type="button" value="Add Item"></a>
   <a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a>
   <form style="display:inline-block;" action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
