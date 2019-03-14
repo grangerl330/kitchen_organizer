@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 3) do
 
   create_table "cabinets", force: :cascade do |t|
     t.string  "name"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 5) do
 
   create_table "items", force: :cascade do |t|
     t.string  "name"
-    t.string  "category"
     t.integer "cabinet_id"
     t.integer "user_id"
   end
