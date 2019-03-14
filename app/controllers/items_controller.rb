@@ -1,11 +1,5 @@
 class ItemsController < ApplicationController
 
-  get '/items' do
-    redirect_if_not_logged_in
-    @user = User.find_by_id(session[:user_id])
-    erb :'/items/index'
-  end
-
   get '/items/new' do
     redirect_if_not_logged_in
     @user = User.find_by_id(session[:user_id])
@@ -75,7 +69,7 @@ class ItemsController < ApplicationController
       @item.update(cabinet_id: "")
     end
 
-    redirect "/items/#{@item.id}"
+    redirect "/cabinets/#{@cabinet.id}"
   end
 
   delete '/items/:id/delete' do
