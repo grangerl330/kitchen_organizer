@@ -1,4 +1,4 @@
-<h2>Your Cabinets: <a href="/cabinets/new"><input type="button" value="Add Cabinet"></a>
+<h2 >Your Cabinets: <a href="/cabinets/new"><input type="button" value="Add Cabinet"></a>
   <form style="display:inline-block;" action="/cabinets/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete All Cabinets">
@@ -20,10 +20,10 @@
     <% end %>
   </p>
 
-  <label><b>Items:</b></label>
+  <label style="color: #444444"><b>Items:</b></label>
     <ul>
     <% cabinet.items.each_with_index do |item, index| %>
-      <li><%= index + 1 %>. <%= item.name %></li>
+      <li style="color: #444444"><%= index + 1 %>. <%= item.name %></li>
     <% end %>
     </ul>
     <br>
