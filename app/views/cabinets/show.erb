@@ -6,7 +6,13 @@
     <input type="submit" value="Delete Cabinet">
   </form>
 </h2>
-<p><b>Capacity:</b> <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
+<p><b>Capacity:</b>
+  <% if @cabinet.items.count > 0 %>
+    <%= @cabinet.items.count %>/<%= @cabinet.capacity %></p>
+  <% else %>
+    Empty
+  <% end %>
+</p>
 
 <p><b>Items:</b></p>
 <% @cabinet.items.each_with_index do |item, index| %>
