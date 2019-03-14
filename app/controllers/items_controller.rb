@@ -20,17 +20,6 @@ class ItemsController < ApplicationController
     redirect "/cabinets/#{@cabinet.id}"
   end
 
-  get '/items/:id' do
-    redirect_if_not_logged_in
-    @item = Item.find_by_id(params[:id])
-
-    if @item.user_id == session[:user_id]
-      erb :'/items/show'
-    else
-      redirect '/items?error=You do not have access to this item'
-    end
-  end
-
   get '/items/:id/edit' do
     redirect_if_not_logged_in
     @item = Item.find_by_id(params[:id])
