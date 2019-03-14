@@ -13,17 +13,10 @@ class ItemsController < ApplicationController
     if params["name"] == ""
       redirect '/items/new?error=Item must have a name'
     else
-      @item = Item.create(name: params[:name], category: params[:category])
-      @user.items << @item
-      @user.save
+      @item = Item.create(name: params[:name], cabinet_id: @cabinet.id, user_id: @user.id)
     end
 
-    if @cabinet
-      @cabinet.items << @item
-      @cabinet.save
-      redirect "/cabinets/#{@cabinet.id}"
-    end
-    redirect "/items"
+    redirect "/cabinets/#{@cabinet.id}"
   end
 
   get '/items/:id' do
@@ -53,20 +46,10 @@ class ItemsController < ApplicationController
     @item = Item.find_by_id(params[:id])
     @cabinet = Cabinet.find_by_name(params["cabinet name"])
 
-    if params["name"] == "" && params["category"] == ""
-      @item
-    elsif params["name"] == ""
-      @item.update(category: params["category"])
-    elsif params["category"] == ""
-      @item.update(name: params["name"])
+    if params["name"] == ""
+      redirect "/items/#{@item.id}/edit?error=Name must be filled in"
     else
-      @item.update(name: params["name"], category: params["category"])
-    end
-
-    if @cabinet
-      @item.update(cabinet_id: @cabinet.id)
-    else
-      @item.update(cabinet_id: "")
+      @item.update(name: params["name"], cabinet_id: @cabinet.id)
     end
 
     redirect "/cabinets/#{@cabinet.id}"
@@ -74,10 +57,11 @@ class ItemsController < ApplicationController
 
   delete '/items/:id/delete' do
     @item = Item.find_by_id(params[:id])
+    @cabinet = @item.cabinet
 
     @item.destroy
 
-    redirect '/items'
+    redirect "/cabinets/#{@cabinet.id}"
   end
 
   delete '/items/delete' do
@@ -89,7 +73,7 @@ class ItemsController < ApplicationController
       end
     end
 
-    redirect '/items'
+    redirect '/cabinets/items'
   end
 
 end
