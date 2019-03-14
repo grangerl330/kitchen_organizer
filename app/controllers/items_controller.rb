@@ -65,16 +65,4 @@ class ItemsController < ApplicationController
     redirect "/cabinets/#{@cabinet.id}"
   end
 
-  delete '/items/delete' do
-    @user = User.find_by_id(session[:user_id])
-
-    Item.all.each do |item|
-      if item.user_id == @user.id
-        item.destroy
-      end
-    end
-
-    redirect '/cabinets/items'
-  end
-
 end
