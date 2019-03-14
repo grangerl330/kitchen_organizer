@@ -5,7 +5,11 @@
   <label> Cabinet </label>
   <select name="cabinet name">
     <% @user.cabinets.each do |cabinet| %>
-      <option><%=cabinet.name%></option>
+      <% if cabinet.id == @cabinet.id %>
+        <option selected="selected"><%=cabinet.name%></option>
+      <% else %>
+        <option><%=cabinet.name%></option>
+      <% end %>
     <% end %>
   </select>
   <br>

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   get '/items/new' do
+    @cabinet = Cabinet.find_by_id(params["cabinet id"])
     redirect_if_not_logged_in
     @user = User.find_by_id(session[:user_id])
     erb :'items/new'

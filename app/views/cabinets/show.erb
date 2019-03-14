@@ -1,5 +1,8 @@
 <h2><%= @cabinet.name %>
-  <a href="/items/new"><input name="<%=@cabinet.id%>" type="button" value="Add Item"></a>
+  <form action="/items/new" method="GET">
+    <input id="hidden" type="hidden" name="cabinet id" value="<%=@cabinet.id%>">
+    <input type="submit" value="Add Item">
+  </form>
   <a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a>
   <form style="display:inline-block;" action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
