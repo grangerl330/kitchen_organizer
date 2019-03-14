@@ -13,8 +13,8 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect '/cabinets'
     else
-      erb :index
-    end 
+      redirect '/login'
+    end
   end
 
   helpers do
