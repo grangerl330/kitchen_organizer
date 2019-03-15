@@ -63,7 +63,11 @@
 
   p {
     margin-bottom: 18px;
-    color: #444444
+    color: #444444;
+  }
+
+  li {
+    margin: 5px 0;
   }
 
   .main {

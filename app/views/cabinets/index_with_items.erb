@@ -1,17 +1,7 @@
-<h2 >Your Cabinets: <a href="/cabinets/new"><input type="button" value="Add Cabinet"></a>
-  <form style="display:inline-block;" action="/cabinets/delete" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete All Cabinets">
-  </form>
-</h2>
+<h2>Your Cabinets <a href="/cabinets/new"><input type="button" value="Add Cabinet"></a></h2>
 
 <% @user.cabinets.each do |cabinet| %>
-  <h3><%=cabinet.name %> <a href="/cabinets/<%=cabinet.id%>"><input type="button" value="View Cabinet"></a>
-    <form style="display:inline-block;" action="/cabinets/<%=cabinet.id%>/delete" method="POST">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete">
-    </form>
-  </h3>
+  <a href="/cabinets/<%=cabinet.id%>"><h3><%=cabinet.name %></h3></a>
   <p style="color:#b8b8b8">Capacity:
     <% if cabinet.items.count > 0 %>
       <%= cabinet.items.count %>/<%= cabinet.capacity %>

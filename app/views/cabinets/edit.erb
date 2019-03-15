@@ -2,7 +2,7 @@
 <p>Current Capacity: <%= @cabinet.capacity - @cabinet.items.count %>/<%= @cabinet.capacity %></p>
 
 <form action="/cabinets/<%= @cabinet.id %>" method="POST">
-  <p>New Cabinet Name: <input type="text" name="name"></p>
-  <p>New Total Capacity: <input type="text" name="capacity"></p>
+  <p>Name: <input type="text" name="name" value="<%=@cabinet.name%>"></p>
+  <p>Capacity: <input type="text" name="capacity" value="<%= @cabinet.capacity %>"></p>
   <p><input type="submit" value="Update Cabinet"></p>
 </form>

@@ -1,12 +1,8 @@
 <h2><%= @cabinet.name %>
-  <form action="/items/new" method="GET">
-    <input id="hidden" type="hidden" name="cabinet id" value="<%=@cabinet.id%>">
-    <input type="submit" value="Add Item">
-  </form>
-  <a href="/cabinets/<%= @cabinet.id %>/edit"><input type="button" value="Edit Cabinet"></a>
+  <a href="/cabinets/<%= @cabinet.id %>/edit"><img src="/images/pencil-edit-button.png" style="margin-left: 10"></a>
   <form style="display:inline-block;" action="/cabinets/<%=@cabinet.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Cabinet">
+    <input type="image" src="/images/garbage.png" alt="Submit">
   </form>
 </h2>
 <p><b>Capacity:</b>
@@ -17,7 +13,20 @@
   <% end %>
 </p>
 
-<p><b>Items:</b></p>
-<% @cabinet.items.each_with_index do |item, index| %>
-  <p><%= index + 1 %>. <%= item.name %> <a href="/items/<%=item.id%>/edit"><input type="button" value="Edit"></a></p>
-<% end %>
+<label style="color: #444444"><b>Items:</b></label>
+  <ul>
+  <% @cabinet.items.each_with_index do |item, index| %>
+    <li style="color: #444444"><%= index + 1 %>. <%= item.name %>
+      <a href="/items/<%=item.id%>/edit"><img src="/images/pencil-edit-button.png" style="margin-left:3px;margin-right:0px;width:11px;height:11px;"></a>
+      <form action="/items/<%=item.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="image" src="/images/garbage.png" alt="Submit" width="11px" height="11px">
+      </form>
+    </li>
+  <% end %>
+  </ul>
+
+<form action="/items/new" method="GET">
+  <input id="hidden" type="hidden" name="cabinet id" value="<%=@cabinet.id%>">
+  <input type="submit" value="Add Item">
+</form>

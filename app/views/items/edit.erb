@@ -1,8 +1,9 @@
-<h2>Edit: <%= @item.name %> &nbsp
+<h2>Edit: <%= @item.name %>
   <form style="display:inline-block;" action="/items/<%=@item.id%>/delete" method="POST">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-  </form></h2>
+    <input type="image" src="/images/garbage.png" alt="Submit">
+  </form>
+</h2>
 
 <form action="/items/<%= @item.id %>" method="POST">
   <p>Item Name: <input type="text" name="name" value="<%= @item.name %>"></p>
