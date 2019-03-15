@@ -27,4 +27,7 @@
     <% end %>
     </ul>
     <br>
+    <% unless cabinet.id == @user.cabinets.last.id %>
+      <hr>
+    <% end %>
 <% end  %>

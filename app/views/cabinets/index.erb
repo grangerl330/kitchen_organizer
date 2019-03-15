@@ -18,4 +18,8 @@
     <% else %>
       Empty
     <% end %>
+
+    <% unless cabinet.id == @user.cabinets.last.id %>
+      <hr>
+    <% end %>
 <% end  %>
