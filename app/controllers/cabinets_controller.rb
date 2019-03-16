@@ -20,6 +20,8 @@ class CabinetsController < ApplicationController
   post '/cabinets' do
     if params.value?("")
       redirect '/cabinets/new'
+    elsif params["capacity"].to_i == 0
+      redirect '/cabinets/new'
     else
       @cabinet = Cabinet.create(params)
       @cabinet.user_id = session[:user_id]
@@ -66,6 +68,9 @@ class CabinetsController < ApplicationController
   delete '/cabinets/:id/delete' do
     @cabinet = Cabinet.find_by_id(params[:id])
 
+    @cabinet.items.each do |item|
+      item.destroy
+    end
     @cabinet.destroy
 
     redirect '/cabinets'
