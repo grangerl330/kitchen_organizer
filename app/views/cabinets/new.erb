@@ -1,7 +1,9 @@
-<h2>Create A New Cabinet:</h2>
+<h2>Create A New Cabinet</h2>
 
 <form action="/cabinets" method="POST">
-  <p>Name: <input type="text" name="name"></p>
-  <p>Capacity: <input type="text" name="capacity"></p>
-  <p><input type="submit" value="Create Cabinet"></p>
+  <p style="margin-bottom: 0">Name: <input type="text" name="name" required></p>
+  <p style="color:#b8b8b8; font-size:12px;">Ex: Spices, Canned Goods</p>
+  <p style="margin-bottom: 0">Capacity: <input type="text" name="capacity" required></p>
+  <p style="color:#b8b8b8; font-size:12px;">Number of items that can fit in the cabinet</p>
+  <p style="margin-bottom: 0"><input type="submit" value="Create Cabinet"></p>
 </form>

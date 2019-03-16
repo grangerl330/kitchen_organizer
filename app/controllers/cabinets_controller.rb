@@ -34,7 +34,7 @@ class CabinetsController < ApplicationController
     if @cabinet.user_id == session[:user_id]
       erb :'/cabinets/show'
     else
-      redirect '/cabinets?error=You do not have access to this cabinet'
+      redirect '/cabinets'
     end
   end
 
