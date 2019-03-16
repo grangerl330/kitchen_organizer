@@ -20,16 +20,15 @@
 
       <footer class="branding">
         <% if logged_in? %>
-          <% if request.path_info != "/cabinets" &&  request.path_info != "/cabinets/items"%>
-            <a href="/cabinets"><input type="button" value="All Cabinets"></a>
+          <% if request.path_info != "/cabinets" &&  request.path_info != "/cabinets/items" && request.path_info != "/welcome"%>
+            <p><a href="/cabinets"><input type="button" value="Back To Kitchen"></a></p>
           <% end %>
-          <% if request.path_info == "/cabinets" %>
-            <a href="/cabinets/items"><input type="button" value="Show All Items"></a>
-          <% elsif request.path_info == "/cabinets/items" %>
-            <a href="/cabinets"><input type="button" value="Hide All Items"></a>
+          <% if request.path_info == "/cabinets" && !current_user.cabinets.empty? && !current_user.items.empty? %>
+            <p><a href="/cabinets/items"><input type="button" value="Show All Items"></a></p>
+          <% elsif request.path_info == "/cabinets/items"%>
+            <p><a href="/cabinets"><input type="button" value="Hide All Items"></a></p>
           <% end %>
-          <br></br>
-          <p><a href="/logout"><input type="button" value="Log Out"></a></p>
+          <a href="/logout"><p style="font-size: 13px; color:#b8b8b8;">Log Out</p></a>
         <% end %>
         <small style="color:#b8b8b8">&copy; 2019 <strong>Kitchen Organizer</strong></small>
       </footer>

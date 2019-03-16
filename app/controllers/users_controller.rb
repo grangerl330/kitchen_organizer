@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else
       @user = User.create(params)
       session[:user_id] = @user.id
-      redirect '/cabinets'
+      redirect '/welcome'
     end
   end
 
@@ -44,5 +44,5 @@ class UsersController < ApplicationController
       redirect '/'
     end
   end
-  
+
 end

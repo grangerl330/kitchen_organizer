@@ -1,4 +1,20 @@
-<h2>Your Cabinets <a href="/cabinets/new"><input type="button" value="Add Cabinet"></a></h2>
+<h2>Your Kitchen
+  <span style="font-size:15px; color:#b8b8b8; font-weight:normal">
+    <i><%=@user.cabinets.count%>
+      <% if @user.cabinets.count == 1 %>
+        cabinet,
+      <% else %>
+        cabinets,
+      <% end %>
+      <%=@user.items.count%>
+      <% if @user.items.count == 1 %>
+        item
+      <% else %>
+        items
+      <% end %>
+    </i>
+  </span>
+</h2>
 
 <% @user.cabinets.each do |cabinet| %>
   <a href="/cabinets/<%=cabinet.id%>"><h3><%=cabinet.name %></h3></a>
@@ -8,8 +24,7 @@
     <% else %>
       Empty
     <% end %>
-
   <hr>
 <% end  %>
 
-<p style="margin-bottom:-5px;margin-top:20px;"><i><%=@user.cabinets.count%> cabinets, <%=@user.items.count%> items</i></p>
+<p style="margin-top: 20px"><a href="/cabinets/new"><input type="button" value="Add Cabinet"></a></p>
