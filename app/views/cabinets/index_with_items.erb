@@ -17,9 +17,8 @@
     <% end %>
     </ul>
     <br>
-    <% unless cabinet.id == @user.cabinets.last.id %>
-      <hr>
-    <% end %>
+
+    <hr>
 <% end  %>
 
-<p style="margin-bottom:-5px;margin-top:30px;"><i><%=@user.cabinets.count%> cabinets, <%=@user.items.count%> items</i></p>
+<p style="margin-bottom:-5px;margin-top:20px;"><i><%=@user.cabinets.count%> cabinets, <%=@user.items.count%> items</i></p>
