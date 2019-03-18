@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   post '/items' do
     @user = User.find_by_id(session[:user_id])
     @cabinet = Cabinet.find_by(name: params["cabinet name"], user_id: @user.id)
-    binding.pry
     if params["name"] == ""
       redirect '/items/new?error=Item must have a name'
     else
