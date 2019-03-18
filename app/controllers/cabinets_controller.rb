@@ -2,13 +2,13 @@ class CabinetsController < ApplicationController
 
   get '/cabinets' do
     redirect_if_not_logged_in
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
     erb :'/cabinets/index'
   end
 
   get '/cabinets/items' do
     redirect_if_not_logged_in
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
     erb :'/cabinets/index_with_items'
   end
 
@@ -77,7 +77,7 @@ class CabinetsController < ApplicationController
   end
 
   delete '/cabinets/delete' do
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
 
     Cabinet.all.each do |cabinet|
       if cabinet.user_id == @user.id

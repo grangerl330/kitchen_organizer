@@ -3,12 +3,12 @@ class ItemsController < ApplicationController
   get '/items/new' do
     @cabinet = Cabinet.find_by_id(params["cabinet id"])
     redirect_if_not_logged_in
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
     erb :'items/new'
   end
 
   post '/items' do
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
     @cabinet = Cabinet.find_by(name: params["cabinet name"], user_id: @user.id)
     if params["name"] == ""
       redirect '/items/new?error=Item must have a name'
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   get '/items/:id/edit' do
     redirect_if_not_logged_in
     @item = Item.find_by_id(params[:id])
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
 
     if @item.user_id == session[:user_id]
       erb :'/items/edit'
